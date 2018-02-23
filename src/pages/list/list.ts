@@ -19,9 +19,9 @@ import { MovieServiceProvider } from '../../providers/movie-service/movie-servic
 export class ListPage {
   movies: Array<any>;
 
-  constructor(public navCtrl: NavController, public movieService: MovieServiceProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public movieService: MovieServiceProvider) {
   }
-  
+
   searchForMovie(event, key) {
         if(event.target.value.length > 2) {
             this.movieService.searchMovies(event.target.value).subscribe(

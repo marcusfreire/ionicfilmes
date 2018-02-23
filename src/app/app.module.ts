@@ -6,7 +6,8 @@ import { HttpModule } from '@angular/http';
 
 import { ListPage } from '../pages/list/list';
 import { InfoPage } from '../pages/info/info';
-import { ContactPage } from '../pages/contact/contact';
+import { FavoPage } from '../pages/favo/favo';
+import { HistPage } from '../pages/hist/hist';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 
@@ -19,7 +20,8 @@ import { MovieServiceProvider } from '../providers/movie-service/movie-service';
     MyApp,
     ListPage,
     InfoPage,
-    ContactPage,
+    HistPage,
+    FavoPage,
     HomePage,
     TabsPage
   ],
@@ -33,7 +35,8 @@ import { MovieServiceProvider } from '../providers/movie-service/movie-service';
     MyApp,
     ListPage,
     InfoPage,
-    ContactPage,
+    HistPage,
+    FavoPage,
     HomePage,
     TabsPage
   ],
