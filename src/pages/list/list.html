@@ -1,0 +1,31 @@
+<!--
+  Generated template for the ListPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Lista de Filmes</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-item>
+        <ion-label color="primary" stacked>Procure pelo filme desejado:</ion-label>
+        <ion-input type="text" (input)="searchForMovie($event, searchKey)"></ion-input>
+    </ion-item>
+
+    <ion-list>
+        <ion-item *ngFor="let movie of movies" (click)="selectMovie($event, movie)">
+            <ion-avatar item-left>
+                <img src="https://image.tmdb.org/t/p/w92{{movie.poster_path}}"/>
+            </ion-avatar>
+            <h2>{{movie.original_title}}</h2>
+            <h3>Idioma Original: {{movie.original_language}}</h3>
+        </ion-item>
+    </ion-list>
+</ion-content>
