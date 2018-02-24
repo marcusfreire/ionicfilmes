@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { InfoPage } from '../info/info';
+import { AppPreferences } from '@ionic-native/app-preferences';
 
 import { MovieServiceProvider } from '../../providers/movie-service/movie-service';
 
@@ -18,12 +19,22 @@ import { MovieServiceProvider } from '../../providers/movie-service/movie-servic
 })
 export class ListPage {
   movies: Array<any>;
+  prefe: AppPreferences;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public movieService: MovieServiceProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public movieService: MovieServiceProvider,private appPreferences: AppPreferences) {
+    this.movieService.searchMovies("batman").subscribe(
+        data => {
+            this.movies = data.results;
+            console.log(data);
+        },
+        err => {
+            console.log(err);
+        },
+        () => console.log('Pesquisa completa dos filmes')
+    );
   }
 
   searchForMovie(event, key) {
-        if(event.target.value.length > 2) {
             this.movieService.searchMovies(event.target.value).subscribe(
                 data => {
                     this.movies = data.results;
@@ -32,9 +43,8 @@ export class ListPage {
                 err => {
                     console.log(err);
                 },
-                () => console.log('Movie Search Complete')
+                () => console.log('Pesquisa completa dos filmes')
             );
-        }
     }
 
     selectMovie(event, movie) {

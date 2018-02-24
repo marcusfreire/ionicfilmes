@@ -15,14 +15,13 @@
 
 <ion-content padding>
   <ion-item>
-        <ion-label color="primary" stacked>Procure pelo filme desejado:</ion-label>
-        <ion-input type="text" (input)="searchForMovie($event, searchKey)"></ion-input>
+        <ion-label color="primary" stacked>Filmes da coleção de Batman:</ion-label>
     </ion-item>
 
     <ion-list>
         <ion-item *ngFor="let movie of movies" (click)="selectMovie($event, movie)">
             <ion-avatar item-left>
-                <img src="https://image.tmdb.org/t/p/w92{{movie.poster_path}}"/>
+                <img src="https://image.tmdb.org/t/p/w92{{movie.backdrop_path}}"/>
             </ion-avatar>
             <h2>{{movie.original_title}}</h2>
             <h3>Idioma Original: {{movie.original_language}}</h3>

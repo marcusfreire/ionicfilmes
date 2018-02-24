@@ -16,8 +16,9 @@ export class MovieServiceProvider {
   }
 
   searchMovies(movieName) {
-      var url = 'http://api.themoviedb.org/3/search/movie?query=&query=' + encodeURI(movieName) + '&api_key=da169b13baae8222394c1d4ffb57222d';
+      var url = 'http://api.themoviedb.org/3/search/movie?query=&query=' + movieName + '&api_key=da169b13baae8222394c1d4ffb57222d';
       var response = this.http.get(url).map(res => res.json());
+      console.log(response);
       return response;
   }
 

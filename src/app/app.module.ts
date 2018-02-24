@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HttpModule } from '@angular/http';
+import { AppPreferences } from '@ionic-native/app-preferences';
 
 import { ListPage } from '../pages/list/list';
 import { InfoPage } from '../pages/info/info';
@@ -44,7 +45,8 @@ import { MovieServiceProvider } from '../providers/movie-service/movie-service';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    MovieServiceProvider
+    MovieServiceProvider,
+    AppPreferences
   ]
 })
 export class AppModule {}
