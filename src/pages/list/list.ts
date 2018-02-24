@@ -24,8 +24,9 @@ export class ListPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, public movieService: MovieServiceProvider,public appPreferences: AppPreferences) {
     this.movieService.searchMovies("batman").subscribe(
         data => {
-            this.appPreferences.store('batman',data.results);
+            this.appPreferences.store('filme','batman',data.results);
             console.log("Gravou os dados em preferences" + data.results);
+            this.movies=data.results;
         },
         err => {
             console.log(err);
@@ -33,10 +34,12 @@ export class ListPage {
         () => console.log('Pesquisa completa dos filmes')
     );
     console.log("Gravou e passou aqui");
-    this.appPreferences.fetch('batman').then((res) => { this.movies=res; });
+    this.appPreferences.fetch('filme','batman').then((res) => { console.log('Lendo batman'+res); });
   }
 
     selectMovie(event, movie) {
+      console.log("EM INFO")
+      this.appPreferences.store('teste','historico',movie);
         console.log(movie);
         this.navCtrl.push(InfoPage, {
             movie: movie
