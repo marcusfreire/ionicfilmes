@@ -21,31 +21,20 @@ export class ListPage {
   movies: Array<any>;
   prefe: AppPreferences;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public movieService: MovieServiceProvider,private appPreferences: AppPreferences) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public movieService: MovieServiceProvider,public appPreferences: AppPreferences) {
     this.movieService.searchMovies("batman").subscribe(
         data => {
-            this.movies = data.results;
-            console.log(data);
+            this.appPreferences.store('batman',data.results);
+            console.log("Gravou os dados em preferences" + data.results);
         },
         err => {
             console.log(err);
         },
         () => console.log('Pesquisa completa dos filmes')
     );
+    console.log("Gravou e passou aqui");
+    this.appPreferences.fetch('batman').then((res) => { this.movies=res; });
   }
-
-  searchForMovie(event, key) {
-            this.movieService.searchMovies(event.target.value).subscribe(
-                data => {
-                    this.movies = data.results;
-                    console.log(data);
-                },
-                err => {
-                    console.log(err);
-                },
-                () => console.log('Pesquisa completa dos filmes')
-            );
-    }
 
     selectMovie(event, movie) {
         console.log(movie);

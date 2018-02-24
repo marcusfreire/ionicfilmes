@@ -5,4 +5,7 @@
 * Francisco Neto
 * Litiano Moura
 * Marcus Freire
-* Ricardo
+* Ricardo Nascimento
+
+## Para executar:
+* ionic cordova run browser
